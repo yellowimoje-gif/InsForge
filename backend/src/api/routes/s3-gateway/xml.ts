@@ -1,4 +1,4 @@
-import { Builder, Parser } from 'xml2js';
+import { Builder } from 'xml2js';
 
 const builder = new Builder({
   xmldec: { version: '1.0', encoding: 'UTF-8' },
@@ -8,13 +8,4 @@ const builder = new Builder({
 
 export function toXml(root: Record<string, unknown>): string {
   return builder.buildObject(root);
-}
-
-const parser = new Parser({
-  explicitArray: false,
-  trim: true,
-});
-
-export function parseXml(input: string | Buffer): Promise<unknown> {
-  return parser.parseStringPromise(input.toString('utf8'));
 }
