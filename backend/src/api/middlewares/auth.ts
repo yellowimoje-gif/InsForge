@@ -56,7 +56,7 @@ export function extractApiKey(req: AuthRequest): string | null {
 // Helper function to extract the opaque anon key from a request
 // The anon key travels in the Authorization header like every other client
 // credential (Bearer anon_...); signed-in clients replace it with their JWT.
-export function extractAnonKey(req: AuthRequest): string | null {
+function extractAnonKey(req: AuthRequest): string | null {
   const bearerToken = extractBearerToken(req.headers.authorization);
   if (bearerToken && bearerToken.startsWith('anon_')) {
     return bearerToken;
